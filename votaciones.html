@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birra & Brujula | Votacion de Casa</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=4">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon.png?v=4">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon.png?v=4">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon.png?v=4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="houses">
+  <div class="page-wrap">
+    <header class="topbar">
+      <div class="topbar-row">
+        <div class="brand">
+          <div class="brand-mark">
+            <img src="logo.png?v=3" alt="Logo Birra & Brujula">
+          </div>
+          <div>
+            <h1>Votacion de Casa Rural</h1>
+            <p>Propuestas, votos y ranking del alojamiento</p>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html" data-page="home">Resumen</a>
+          <a href="votaciones.html" data-page="houses">Casa</a>
+          <a href="transporte.html" data-page="transport">Transporte</a>
+          <a href="compra.html" data-page="shopping">Compra</a>
+          <a href="actividades.html" data-page="activities">Actividades</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="grid cols-2">
+      <article class="card">
+        <h3>Tu usuario para votar</h3>
+        <p class="muted">Selecciona quien eres para dar o quitar voto.</p>
+        <select id="houseUser" data-member-select></select>
+      </article>
+
+      <article class="card">
+        <h3>Nueva casa candidata</h3>
+        <form id="houseForm" class="grid" style="margin-top:8px;">
+          <input class="field" id="hName" type="text" placeholder="Nombre de la casa" required>
+          <div class="row">
+            <input class="field" id="hPrice" type="number" step="0.01" min="1" placeholder="Precio total" required>
+            <input class="field" id="hUrl" type="url" placeholder="Enlace de reserva">
+          </div>
+          <select class="field" id="hPayer" data-member-select data-allow-common="true">
+            <option value="Fondo comun">Fondo comun</option>
+          </select>
+          <div class="row">
+            <input class="field" id="hDateFrom" type="date" placeholder="Fecha desde">
+            <input class="field" id="hDateTo" type="date" placeholder="Fecha hasta">
+          </div>
+          <div class="row">
+            <input class="field" id="hDesc" type="text" maxlength="120" placeholder="Descripcion breve (zona, extras, ambiente)">
+          </div>
+          <input class="field" id="hImg" type="file" accept="image/*">
+          <button class="btn-primary" type="submit">Anadir propuesta</button>
+        </form>
+      </article>
+    </section>
+
+    <section class="card" style="margin-top:16px;">
+      <div class="module-header">
+        <h3>Ranking en directo</h3>
+        <span class="pill">Se ordena automaticamente por votos</span>
+      </div>
+      <div class="cards-grid" id="houseCards"></div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

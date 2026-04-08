@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birra & Brujula | Compra</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=4">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon.png?v=4">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon.png?v=4">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon.png?v=4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="shopping">
+  <div class="page-wrap">
+    <header class="topbar">
+      <div class="topbar-row">
+        <div class="brand">
+          <div class="brand-mark">
+            <img src="logo.png?v=3" alt="Logo Birra & Brujula">
+          </div>
+          <div>
+            <h1>Lista de Compra del Campamento</h1>
+            <p>Control de productos, responsables y gastos</p>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html" data-page="home">Resumen</a>
+          <a href="votaciones.html" data-page="houses">Casa</a>
+          <a href="transporte.html" data-page="transport">Transporte</a>
+          <a href="compra.html" data-page="shopping">Compra</a>
+          <a href="actividades.html" data-page="activities">Actividades</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="grid cols-2">
+      <article class="card">
+        <h3>Anadir producto</h3>
+        <form id="shopForm" class="grid" style="margin-top:8px;">
+          <input class="field" id="sName" type="text" placeholder="Producto (ej. carne para barbacoa)" required>
+          <div class="row">
+            <select class="field" id="sCat">
+              <option value="Comida">Comida</option>
+              <option value="Bebida">Bebida</option>
+              <option value="Higiene">Higiene</option>
+              <option value="Juegos">Juegos</option>
+              <option value="Otros">Otros</option>
+            </select>
+            <input class="field" id="sPrice" type="number" step="0.01" min="0.01" placeholder="Precio" required>
+          </div>
+          <select class="field" id="sPayer"></select>
+          <button class="btn-primary" type="submit">Guardar producto</button>
+        </form>
+      </article>
+
+      <article class="card">
+        <h3>Resumen de compra</h3>
+        <div class="kpis" style="grid-template-columns:1fr; gap:10px;">
+          <article class="kpi" style="background:linear-gradient(140deg,#3d603f,#67906d);">
+            <span class="label">Total compra</span>
+            <span class="value" id="sTotal">0.00 EUR</span>
+          </article>
+          <article class="kpi" style="background:linear-gradient(140deg,#6e4f2f,#b07a34);">
+            <span class="label">Coste por persona</span>
+            <span class="value" id="sPer">0.00 EUR</span>
+          </article>
+          <article class="kpi" style="background:linear-gradient(140deg,#4a3c58,#7d5a94);">
+            <span class="label">Items en lista</span>
+            <span class="value" id="sCount">0</span>
+          </article>
+        </div>
+      </article>
+    </section>
+
+    <section class="card" style="margin-top:16px;">
+      <div class="module-header">
+        <h3>Cesta compartida</h3>
+        <span class="pill">Marca lo comprado para llevar el control</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>OK</th>
+              <th>Producto</th>
+              <th>Categoria</th>
+              <th>Precio</th>
+              <th>Responsable</th>
+              <th>Accion</th>
+            </tr>
+          </thead>
+          <tbody id="shopBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birra & Brujula | Dashboard</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=4">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon.png?v=4">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon.png?v=4">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon.png?v=4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="home">
+  <div class="page-wrap">
+    <header class="topbar">
+      <div class="topbar-row">
+        <div class="brand">
+          <div class="brand-mark">
+            <img src="logo.png?v=3" alt="Logo Birra & Brujula">
+          </div>
+          <div>
+            <h1>Birra & Brujula</h1>
+            <p>Campo, amigos, juegos y cero caos organizativo</p>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html" data-page="home">Resumen</a>
+          <a href="votaciones.html" data-page="houses">Casa</a>
+          <a href="transporte.html" data-page="transport">Transporte</a>
+          <a href="compra.html" data-page="shopping">Compra</a>
+          <a href="actividades.html" data-page="activities">Actividades</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h2>El finde de pueblo que vamos a recordar todo el año</h2>
+      <p>Coordina asistentes, decide casa, reparte gastos y llena el plan de juegos y actividades sin volver loco al grupo de WhatsApp.</p>
+    </section>
+
+    <section class="grid">
+      <div class="kpis">
+        <article class="kpi">
+          <span class="label">Asistentes</span>
+          <span class="value" id="kMembers">0</span>
+        </article>
+        <article class="kpi">
+          <span class="label">Presupuesto total</span>
+          <span class="value" id="kTotal">0.00 EUR</span>
+        </article>
+        <article class="kpi">
+          <span class="label">Coste por persona</span>
+          <span class="value" id="kPer">0.00 EUR</span>
+        </article>
+        <article class="kpi">
+          <span class="label">Casas en votacion</span>
+          <span class="value" id="kVotes">0</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="grid cols-2">
+      <article class="card">
+        <div class="module-header">
+          <h3>Equipo de viaje</h3>
+        </div>
+        <div class="row">
+          <input class="field" id="memberName" type="text" placeholder="Escribe un nombre y pulsa Enter">
+          <button class="btn-primary" id="addMemberBtn">Anadir</button>
+        </div>
+        <ul class="member-list" id="membersList"></ul>
+      </article>
+
+      <article class="card">
+        <div class="module-header">
+          <h3>Casa que va ganando</h3>
+        </div>
+        <div id="winnerImg" class="vote-image" style="border-radius:14px; height:200px;"></div>
+        <h3 id="winnerTitle" style="margin-top:12px;">Sin casa votada aun</h3>
+        <p class="muted" id="winnerMeta">Entra en Votaciones para proponer opciones</p>
+        <div class="pill-list">
+          <span class="pill">Ranking por votos</span>
+          <span class="pill">Fotos y enlaces</span>
+          <span class="pill">Actualizacion instantanea</span>
+        </div>
+      </article>
+    </section>
+
+    <section class="grid cols-3">
+      <article class="card">
+        <h3>Reto aleatorio del finde</h3>
+        <p class="muted" id="challengeText">Pulsa para sacar un mini juego grupal.</p>
+        <button class="btn-primary" id="challengeBtn">Sacar reto</button>
+      </article>
+
+      <article class="card">
+        <h3>Informe del plan</h3>
+        <p class="muted">Genera un informe compacto (1 página) o detallado para compartir.</p>
+        <div class="row">
+          <button class="btn-secondary" id="exportPdfCompactBtn">PDF compacto</button>
+          <button class="btn-secondary" id="exportPdfDetailedBtn">PDF detallado</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Reset rapido</h3>
+        <p class="muted">Si queréis empezar de cero para otro viaje.</p>
+        <button class="btn-danger" id="resetBtn">Borrar todo</button>
+      </article>
+    </section>
+
+    <section class="card" style="margin-top:16px;">
+      <div class="module-header">
+        <h3>Reparto inteligente de gastos</h3>
+        <span class="pill">Liquidacion sugerida</span>
+      </div>
+      <div class="grid cols-2" style="margin-top:0;">
+        <article class="card" style="box-shadow:none; border:1px dashed #d8cfb6;">
+          <h3 style="font-size:1.05rem;">Balance por persona</h3>
+          <ul id="balanceList" class="member-list"></ul>
+        </article>
+        <article class="card" style="box-shadow:none; border:1px dashed #d8cfb6;">
+          <h3 style="font-size:1.05rem;">Pagos recomendados</h3>
+          <ul id="settlementList" class="member-list"></ul>
+        </article>
+      </div>
+      <p class="muted" style="margin:10px 0 0;">Calculado con casa ganadora, transporte y compra. Si un gasto está en Fondo comun, no genera deuda personal.</p>
+    </section>
+
+    <section class="card" style="margin-top:16px;">
+      <div class="module-header">
+        <h3>Resumen de actividades</h3>
+        <span class="pill">Plan completo por dias</span>
+      </div>
+      <div id="activitySummaryStats" class="pill-list" style="margin-bottom:10px;"></div>
+      <ul id="activitySummary" class="member-list"></ul>
+      <p class="muted" style="margin:10px 0 0;">Calculado con las actividades propuestas y el itinerario. Sirve para tener una vision global del plan y detectar dias con exceso de planes o momentos de relax.</p>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

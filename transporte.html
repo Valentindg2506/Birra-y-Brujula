@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birra & Brujula | Transporte</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=4">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon.png?v=4">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon.png?v=4">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon.png?v=4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="transport">
+  <div class="page-wrap">
+    <header class="topbar">
+      <div class="topbar-row">
+        <div class="brand">
+          <div class="brand-mark">
+            <img src="logo.png?v=3" alt="Logo Birra & Brujula">
+          </div>
+          <div>
+            <h1>Plan de Transporte</h1>
+            <p>Calculadora rapida para mover al grupo</p>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html" data-page="home">Resumen</a>
+          <a href="votaciones.html" data-page="houses">Casa</a>
+          <a href="transporte.html" data-page="transport">Transporte</a>
+          <a href="compra.html" data-page="shopping">Compra</a>
+          <a href="actividades.html" data-page="activities">Actividades</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero" style="background:linear-gradient(110deg, rgba(30,35,24,0.82), rgba(66,45,24,0.78)), url('https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=1600&q=80') center/cover; margin-bottom:16px;">
+      <h2>Ruta sin dramas</h2>
+      <p>Asistentes detectados: <b id="tAttendees">1</b>. Cambia de modo de transporte y calcula costes ida y vuelta al instante.</p>
+    </section>
+
+    <section class="card">
+      <form id="transportForm" class="grid" style="margin-top:8px;">
+        <label>
+          Tipo de transporte
+          <select id="tType" class="field">
+            <option value="coche">Coche o furgoneta</option>
+            <option value="tren">Tren</option>
+            <option value="avion">Avion</option>
+          </select>
+        </label>
+
+        <label>
+          Quien paga el transporte
+          <select id="tPayer" class="field" data-member-select data-allow-common="true">
+            <option value="Fondo comun">Fondo comun</option>
+          </select>
+        </label>
+
+        <div data-t-form="coche" class="grid cols-2">
+          <input class="field" id="cKm" type="number" min="0" step="1" placeholder="Km solo ida">
+          <input class="field" id="cCons" type="number" min="0" step="0.1" placeholder="Consumo L/100 km">
+          <input class="field" id="cGas" type="number" min="0" step="0.01" placeholder="Precio combustible por litro">
+          <input class="field" id="cToll" type="number" min="0" step="0.01" placeholder="Peajes solo ida">
+        </div>
+
+        <div data-t-form="tren" class="grid cols-2" hidden>
+          <input class="field" id="bTicket" type="number" min="0" step="0.01" placeholder="Billete por persona">
+          <input class="field" id="bExtra" type="number" min="0" step="0.01" placeholder="Extras totales (taxi, parking)">
+        </div>
+
+        <div data-t-form="avion" class="grid cols-2" hidden>
+          <input class="field" id="aTicket" type="number" min="0" step="0.01" placeholder="Vuelo por persona">
+          <input class="field" id="aBag" type="number" min="0" step="0.01" placeholder="Maleta por persona">
+          <input class="field" id="aTransfer" type="number" min="0" step="0.01" placeholder="Traslados totales aeropuerto">
+        </div>
+      </form>
+
+      <div class="grid cols-2" style="margin-top:10px;">
+        <article class="card" style="box-shadow:none; border:1px dashed #d8cfb6;">
+          <h3>Total transporte</h3>
+          <p id="tTotal" style="font-size:1.5rem; font-weight:800; margin:0;">0.00 EUR</p>
+        </article>
+        <article class="card" style="box-shadow:none; border:1px dashed #d8cfb6;">
+          <h3>Coste por persona</h3>
+          <p id="tPer" style="font-size:1.5rem; font-weight:800; margin:0;">0.00 EUR</p>
+        </article>
+      </div>
+
+      <button class="btn-primary" id="saveTransport" type="button" style="margin-top:10px;">Guardar transporte</button>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

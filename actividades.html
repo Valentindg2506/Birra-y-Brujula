@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birra & Brujula | Actividades</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=4">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon.png?v=4">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon.png?v=4">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon.png?v=4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="activities">
+  <div class="page-wrap">
+    <header class="topbar">
+      <div class="topbar-row">
+        <div class="brand">
+          <div class="brand-mark">
+            <img src="logo.png?v=3" alt="Logo Birra & Brujula">
+          </div>
+          <div>
+            <h1>Actividades y Juegos</h1>
+            <p>Proponer, votar y medir presupuesto por persona</p>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html" data-page="home">Resumen</a>
+          <a href="votaciones.html" data-page="houses">Casa</a>
+          <a href="transporte.html" data-page="transport">Transporte</a>
+          <a href="compra.html" data-page="shopping">Compra</a>
+          <a href="actividades.html" data-page="activities">Actividades</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="grid cols-2">
+      <article class="card">
+        <h3>Tu perfil de voto</h3>
+        <p class="muted">Selecciona quien eres para apuntarte a planes.</p>
+        <select id="actUser" data-member-select></select>
+        <p style="margin-top:14px;" class="muted">Tu presupuesto de actividades votadas:</p>
+        <p id="myActTotal" style="font-size:1.6rem; font-weight:800; margin:0;">0.00 EUR</p>
+      </article>
+
+      <article class="card">
+        <h3>Proponer actividad</h3>
+        <form id="actForm" class="grid" style="margin-top:8px;">
+          <input class="field" id="aName" type="text" placeholder="Nombre de la actividad" required>
+          <div class="row">
+            <select class="field" id="aCat">
+              <option value="Aventura">Aventura</option>
+              <option value="Juegos de grupo">Juegos de grupo</option>
+              <option value="Naturaleza">Naturaleza</option>
+              <option value="Relax">Relax</option>
+              <option value="Nocturno">Nocturno</option>
+            </select>
+            <input class="field" id="aPrice" type="number" step="0.01" min="1" placeholder="Precio por persona" required>
+          </div>
+          <textarea id="aDesc" placeholder="Descripcion breve"></textarea>
+          <input class="field" id="aUrl" type="url" placeholder="Enlace (opcional)">
+          <input class="field" id="aImg" type="file" accept="image/*">
+          <button class="btn-primary" type="submit">Anadir actividad</button>
+        </form>
+      </article>
+    </section>
+
+    <section class="card" style="margin-top:16px;">
+      <div class="module-header">
+        <h3>Planes propuestos</h3>
+        <span class="pill">Puedes votar varios</span>
+      </div>
+      <div class="cards-grid" id="actCards"></div>
+    </section>
+
+    <section class="grid cols-2">
+      <article class="card">
+        <h3>Itinerario por dias</h3>
+        <p class="muted">Crea bloques con hora para organizar actividades, comidas y juegos.</p>
+        <form id="itForm" class="grid" style="margin-top:8px;">
+          <div class="row">
+            <input class="field" id="itDate" type="date" required>
+            <input class="field" id="itTime" type="time" required>
+          </div>
+          <input class="field" id="itTitle" type="text" placeholder="Titulo del bloque (ej. Torneo de cartas)" required>
+          <div class="row">
+            <select class="field" id="itArea">
+              <option value="General">General</option>
+              <option value="Comida">Comida</option>
+              <option value="Juego">Juego</option>
+              <option value="Actividad exterior">Actividad exterior</option>
+              <option value="Descanso">Descanso</option>
+            </select>
+            <input class="field" id="itNote" type="text" maxlength="140" placeholder="Nota breve (opcional)">
+          </div>
+          <button class="btn-primary" type="submit">Anadir bloque</button>
+        </form>
+      </article>
+
+      <article class="card">
+        <div class="module-header">
+          <h3>Agenda del viaje</h3>
+          <select id="itDayFilter" class="field" style="max-width: 200px;"></select>
+        </div>
+        <div class="row" style="margin-bottom:10px;">
+          <input class="field" id="autoDateStart" type="date" style="max-width:180px;">
+          <button class="btn-secondary" id="autoPlanBtn" type="button">Generar plan automatico</button>
+          <button class="btn-danger" id="clearDoneBtn" type="button">Limpiar hechos</button>
+        </div>
+        <ul id="itList" class="member-list"></ul>
+      </article>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
