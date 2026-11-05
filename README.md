@@ -34,19 +34,6 @@ Aplicacion web para organizar un viaje en grupo de principio a fin: asistentes, 
 - `sw.js`: cache y soporte offline basico.
 - `logo.png`, `favicon.png`, `favicon.svg`: recursos visuales.
 
-## Como ejecutar en local
-
-Importante: para que el Service Worker funcione correctamente, sirve el proyecto por `http://` (no abrir el HTML con `file://`).
-
-Opciones habituales:
-
-1. Con VS Code Live Server, abrir la carpeta y lanzar servidor local.
-2. Con cualquier servidor estatico (Nginx, Apache, etc.) apuntando a la raiz del proyecto.
-
-Despues abre en navegador la URL local, por ejemplo:
-
-- `http://localhost:5500/index.html`
-
 ## Persistencia de datos
 
 La aplicacion guarda datos en `localStorage` del navegador con claves como:
@@ -82,4 +69,3 @@ Los datos son locales al navegador/dispositivo.
 
 - El modo offline cubre principalmente el shell de la app y recursos cacheados.
 - Las imagenes externas (por ejemplo, fondos remotos) dependen de disponibilidad de red si no estan en cache.
-
